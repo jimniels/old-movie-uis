@@ -1,0 +1,16 @@
+{
+  "name": "old-interfaces",
+  "version": "1.0.0",
+  "description": "",
+  "main": "",
+  "scripts": {
+    "start": "npm run build && http-server src/",
+    "build": "node scripts/deploy.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "http-server": "^0.11.1",
+    "node-fetch": "^2.2.0"
+  }
+}

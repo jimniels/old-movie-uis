@@ -1,0 +1,59 @@
+<html>
+<head>
+    <title>Computer Interfaces From Old Movies (via screen.waxy.org)</title>
+
+    <style>
+        body {
+            text-align: center;
+            font-family: sans-serif;
+        }
+        img {
+            display: block;
+            margin: 0 auto 2.5em;
+            width: auto;
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+    <script src="./scripts/jquery1.11.1.js"></script>
+    <script src="./scripts/lazyload.js"></script>
+</head>
+<body>
+    <h1>Interfaces from <a href="http://screen.waxy.org/screenshots/">screen.waxy.org/screenshots/</a></h1>
+    
+    <script type="text/javascript">
+    $(document).ready(function(){
+
+        $.get( "./data.html", function( data ) {
+            console.log(data);
+
+            $imgs = $(data).find('td a');
+
+            var html = '';
+            $imgs.each(function(i){
+
+                // Load the first 10 <img> tags normally
+                // But don't load index 0 item 
+                // (because it's the 'parent directory' apache link)
+                // the rest will be lazyloaded
+                if(i == 0) {
+                    // do nothing
+                }
+                else if(i<10) {
+                    html += '<img src="http://screen.waxy.org/screenshots/'+ $(this).attr('href') +'">';
+                } 
+                else {
+                    html += '<img class="lazy" data-original="http://screen.waxy.org/screenshots/'+ $(this).attr('href') +'">';
+                }
+            });
+
+            $('body').append(html);
+
+            $("img.lazy").lazyload();
+        });
+    });
+
+    </script>
+
+</body>
+</html>
