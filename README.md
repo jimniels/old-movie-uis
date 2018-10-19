@@ -1,8 +1,8 @@
 # Old Movie UIs
 
-## Development: `npm start`
+**Development: `npm start`**
 
-## Build: `npm run build`
+**Build: `npm run build`**
 
 Content provided from [screen.waxy.org/screenshots/](http://screen.waxy.org/screenshots/). It's static HTML hosted on github, which means the data is static. This is ok. We can update the stuff manually and push when needed.
 
