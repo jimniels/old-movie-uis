@@ -1,59 +1,73 @@
 <html>
 <head>
-    <title>Computer Interfaces From Old Movies (via screen.waxy.org)</title>
+  <title>Old Movie User Interfaces (via screen.waxy.org)</title>
 
-    <style>
-        body {
-            text-align: center;
-            font-family: sans-serif;
-        }
-        img {
-            display: block;
-            margin: 0 auto 2.5em;
-            width: auto;
-            max-width: 100%;
-            height: auto;
-        }
-    </style>
-    <script src="./scripts/jquery1.11.1.js"></script>
-    <script src="./scripts/lazyload.js"></script>
+  <style>
+    body {
+      background: #eaeaea;
+      text-align: center;
+      font-family: sans-serif;
+      margin: 10px;
+    }
+    h1 {
+      margin: 20px 0 10px;
+    }
+    h2 {
+      font-size: 1em;
+      color: #777;
+      font-weight: normal;
+      margin-bottom: 40px;
+    }
+    img {
+      display: block;
+      width: auto;
+      max-width: 100%;
+      height: auto;
+      margin: 0 auto 80px;
+      box-shadow: 0 5px 10px rgba(0,0,0,.2), 0 15px 35px rgba(0,0,0,.1);
+      border: 5px solid rgba(255,255,255,1);
+    }
+  </style>
+  <script src="./scripts/jquery1.11.1.js"></script>
+  <script src="./scripts/lazyload.js"></script>
 </head>
 <body>
-    <h1>Interfaces from <a href="http://screen.waxy.org/screenshots/">screen.waxy.org/screenshots/</a></h1>
-    
-    <script type="text/javascript">
-    $(document).ready(function(){
+  <h1>Old Movie UIs</h1>
+  <h2>Coutesy of <a href="http://screen.waxy.org/screenshots/">screen.waxy.org</a></h2>
+  
+  <script type="text/javascript">
+  $(document).ready(function(){
 
-        $.get( "./data.html", function( data ) {
-            console.log(data);
+      $.get( "./data.html", function( data ) {
+          console.log(data);
 
-            $imgs = $(data).find('td a');
+          $imgs = $(data).find('td a');
 
-            var html = '';
-            $imgs.each(function(i){
+          var html = '';
+          $imgs.each(function(i){
 
-                // Load the first 10 <img> tags normally
-                // But don't load index 0 item 
-                // (because it's the 'parent directory' apache link)
-                // the rest will be lazyloaded
-                if(i == 0) {
-                    // do nothing
-                }
-                else if(i<10) {
-                    html += '<img src="http://screen.waxy.org/screenshots/'+ $(this).attr('href') +'">';
-                } 
-                else {
-                    html += '<img class="lazy" data-original="http://screen.waxy.org/screenshots/'+ $(this).attr('href') +'">';
-                }
-            });
+              // Load the first 10 <img> tags normally
+              // But don't load index 0 item 
+              // (because it's the 'parent directory' apache link)
+              // the rest will be lazyloaded
+              if(i == 0) {
+                  // do nothing
+              }
+              else if(i<10) {
+                  html += '<img src="http://screen.waxy.org/screenshots/'+ $(this).attr('href') +'">';
+              } 
+              else {
+                  html += '<img class="lazy" data-original="http://screen.waxy.org/screenshots/'+ $(this).attr('href') +'">';
+              }
+          });
 
-            $('body').append(html);
+          $('body').append(html);
 
-            $("img.lazy").lazyload();
-        });
-    });
+          $("img.lazy").lazyload();
+      });
+  });
 
-    </script>
+  </script>
 
 </body>
 </html>
