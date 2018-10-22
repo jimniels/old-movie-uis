@@ -4,8 +4,8 @@
   "description": "",
   "main": "",
   "scripts": {
-    "start": "npm run build && http-server src/",
-    "build": "node scripts/deploy.js"
+    "start": "npm run build && http-server public/",
+    "build": "node scripts/get-data.js"
   },
   "author": "",
   "license": "ISC",
